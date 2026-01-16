@@ -1,0 +1,12 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Data files (do NOT push datasets)
+data/raw/
+data/processed/*.csv
+# Trained model weights
+*.pt

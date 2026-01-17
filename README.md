@@ -86,8 +86,8 @@ The system focuses on:
 Evaluate all trained models on the test dataset using:
 ```bash
 python -m eval.evaluate_all_models
-
-## 🌐 Live Inference*
+```
+## 🌐 Live Inference
 
 The project supports real-time weather prediction using external weather APIs.
 

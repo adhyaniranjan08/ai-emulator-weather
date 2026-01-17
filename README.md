@@ -1,241 +1,123 @@
-🌍 AI Emulator for Weather & Earth System Modeling
+# 🌦️ AI Emulator for Weather & Earth System Modeling
 
-This project presents a deep learning–based AI emulator for weather prediction and extreme event detection using historical and live meteorological data.
-The system trains and compares multiple neural network architectures, evaluates them using standard research metrics, and deploys them for real-time inference.
+A deep learning–based emulator for weather prediction and extreme event detection.  
+This project trains, evaluates, and compares multiple neural network architectures on historical and live weather data, supporting real-time inference.
 
-🚀 Project Motivation
+---
 
-Traditional weather prediction models are computationally expensive and complex.
-This project explores how AI emulators can approximate weather parameterization using historical climate data while remaining efficient and deployable.
+## 🚀 Project Overview
 
-Unlike simple prediction apps, this project includes:
+Traditional numerical weather prediction models are computationally expensive and time-consuming.  
+This project explores **AI-based weather emulation** as an efficient alternative to approximate weather parameterization using historical data.
 
-Multiple deep learning models
+The system focuses on:
+- Fast inference using deep learning
+- Comparison of multiple neural network architectures
+- Detection of extreme weather events
+- Live weather prediction using real-time API data
 
-Proper train/validation/test evaluation
+---
 
-Quantitative comparison using metrics
+## ✨ Features
 
-Live data inference
+- Predict next-hour weather parameters
+- Detect extreme weather events (heatwaves, thunderstorms, cyclones, heavy rainfall)
+- Train and evaluate multiple deep learning models
+- Live real-time inference using weather APIs
+- Consistent benchmarking across models
 
-This adds a strong research component, suitable for academic publication.
+---
 
-📊 Dataset
-Source
+## 📦 Dataset
 
-NASA POWER (Prediction of Worldwide Energy Resources)
+**Source:** NASA POWER (Prediction of Worldwide Energy Resources)
 
-Hourly historical weather data
+**Input Features:**
+- Temperature
+- Rainfall
+- Wind speed
+- Relative humidity
+- Surface pressure
 
-Locations Used
+**Output:**
+- Continuous weather predictions (regression)
+- Extreme event probability (classification)
 
-Bangalore
+**Preprocessing:**
+- Sliding window approach
+- Uses past 6 hours of weather data to predict the next hour
 
-Mumbai
+---
 
-Chennai
+## 🧠 Models Implemented
 
-Delhi
+| Model | Description |
+|------|------------|
+| MLP | Baseline feedforward neural network |
+| LSTM | Captures long-term temporal dependencies |
+| GRU | Efficient sequence modeling |
+| CNN-LSTM | Local feature extraction + temporal modeling |
+| Transformer | Attention-based long-range dependency learning |
 
-Input Features
+---
 
-Rainfall
+## 🛠️ Training Details
 
-Temperature
+**Loss Functions**
+- Regression: Mean Squared Error (MSE)
+- Classification: Binary Cross-Entropy with Logits
 
-Wind speed
+**Optimizer**
+- Adam optimizer with consistent hyperparameters
 
-Relative humidity
+**Data Split**
+- Training: 70%
+- Validation: 15%
+- Testing: 15%
 
-Surface pressure
+**Evaluation Metrics**
+- MAE for regression
+- Accuracy, Precision, Recall, and F1-score for classification
 
-Output Targets
+---
 
-Regression (Next hour):
+## 📊 Model Evaluation
 
-Temperature
+Evaluate all trained models on the test dataset using:
+```bash
+python -m eval.evaluate_all_models
 
-Rainfall
 
-Wind speed
+## 🌐 Live Inference
 
-Classification (Extreme events):
+The project supports real-time weather prediction using external weather APIs.
 
-Cloudburst
-
-Thunderstorm
-
-Heatwave
-
-Coldwave
-
-Cyclone-like
-
-🧠 Dataset Engineering
-
-A sliding window approach is used:
-
-Input: past 6 hours × 5 features
-
-Output: next-hour predictions
-
-This converts raw weather data into a time-series supervised learning problem.
-
-Implemented in:
-
-datasets/window_dataset.py
-
-🏗️ Models Implemented
-
-All models use the same dataset, inputs, targets, and normalization for fair comparison.
-
-Model	Description
-MLP	Baseline model (no temporal awareness)
-LSTM	Captures long-term temporal dependencies
-GRU	Efficient alternative to LSTM
-CNN-LSTM	Combines local feature extraction + temporal modeling
-Transformer	Attention-based long-range dependency modeling
-
-Each model predicts:
-
-Continuous weather variables (regression)
-
-Extreme event probabilities (classification)
-
-⚙️ Training Setup
-
-Loss Function:
-
-Regression → MSE Loss
-
-Classification → BCEWithLogits Loss
-
-Optimizer: Adam
-
-Same hyperparameters across models
-
-Models saved as .pt checkpoints
-
-Training scripts are located in:
-
-train/
-
-📈 Evaluation Methodology
-Data Split
-
-Training: 70%
-
-Validation: 15%
-
-Testing: 15% (unseen during training)
-
-Metrics Used
-
-Classification:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-score
-
-Regression:
-
-Mean Absolute Error (MAE)
-
-Evaluation is performed only on the test set, ensuring unbiased results.
-
-Evaluation script:
-
-eval/evaluate_all_models.py
-
-🌐 Live Inference (Deployment)
-
-The project supports real-time weather inference using live data.
-
-Live Pipeline
-
-Fetch last 6 hours of weather data (Open-Meteo API)
-
-Normalize using training statistics
-
-Run inference using trained models
-
-Output:
-
-Next-hour weather predictions
-
-Extreme event probabilities
-
-Live inference code:
-
-live_inference/
-
-
-Run:
-
+Run live inference:
+```bash
 python -m live_inference.run_live
 
-🔄 Multi-Model Live Comparison
-
-A comparison module allows the same live input to be passed into all trained models, enabling side-by-side comparison of predictions.
-
-This demonstrates:
-
-Model stability
-
-Sensitivity to real-world data
-
-Differences in temporal reasoning
-
-Run:
-
+Compare predictions from different models:
 python -m live_inference.compare_models
 
-🧪 Key Results
-
-Temporal models (CNN-LSTM, GRU, Transformer) outperform MLP
-
-CNN-LSTM achieves strong balance between accuracy and stability
-
-Transformer shows potential but requires higher computational resources
-
-Live inference demonstrates deployability of AI emulators
-
-📂 Project Structure
-ai_emulator/
-│
+📁 Project Structure
+ai_emulator_weather/
 ├── data/
 │   ├── raw/
 │   └── processed/
-│
 ├── datasets/
 │   └── window_dataset.py
-│
 ├── models/
 │   ├── mlp.py
 │   ├── lstm.py
 │   ├── gru.py
 │   ├── cnn_lstm.py
 │   └── transformer.py
-│
 ├── train/
-│   └── training scripts
-│
 ├── eval/
 │   └── evaluate_all_models.py
-│
 ├── live_inference/
 │   ├── run_live.py
 │   ├── compare_models.py
 │   ├── live_fetch.py
 │   └── normalize.py
-│
 └── README.md
-
-📝 Conclusion
-
-This project demonstrates how AI emulators can effectively model weather dynamics by learning from historical data.
-By combining rigorous evaluation with live deployment, the system bridges the gap between research and real-world application.

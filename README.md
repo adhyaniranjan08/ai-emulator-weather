@@ -125,7 +125,7 @@ ai_emulator_weather/
 │   ├── live_fetch.py
 │   └── normalize.py
 └── README.md
-└──requirements.txt
+└──requirement.txt
 
 ```
 ## Requiremnts

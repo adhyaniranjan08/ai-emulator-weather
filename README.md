@@ -87,34 +87,39 @@ Evaluate all trained models on the test dataset using:
 ```bash
 python -m eval.evaluate_all_models
 
-**## 🌐 Live Inference**
+## 🌐 Live Inference*
 
 The project supports real-time weather prediction using external weather APIs.
 
 Run live inference:
 ```bash
 python -m live_inference.run_live
+```
 
 Compare predictions from different models:
+``` bash
 python -m live_inference.compare_models
+```
 
-**📁 Project Structure**
+## 📁 Project Structure
+
+```text
 ai_emulator_weather/
-├── data/
-│   ├── raw/
-│   └── processed/
+├── data/                     # Weather data storage
+│   ├── raw/                  # Raw downloaded datasets
+│   └── processed/            # Preprocessed & windowed data
 ├── datasets/
-│   └── window_dataset.py
-├── models/
-│   ├── mlp.py
-│   ├── lstm.py
-│   ├── gru.py
-│   ├── cnn_lstm.py
-│   └── transformer.py
-├── train/
+│   └── window_dataset.py     # Sliding window dataset logic
+├── models/                   # Deep learning model definitions
+│   ├── mlp.py                # Multi-Layer Perceptron
+│   ├── lstm.py               # LSTM model
+│   ├── gru.py                # GRU model
+│   ├── cnn_lstm.py           # CNN + LSTM hybrid model
+│   └── transformer.py        # Transformer-based model
+├── train/                    # Model training scripts
 ├── eval/
-│   └── evaluate_all_models.py
-├── live_inference/
+│   └── evaluate_all_models.py # Evaluation on test dataset
+├── live_inference/           # Real-time prediction modules
 │   ├── run_live.py
 │   ├── compare_models.py
 │   ├── live_fetch.py

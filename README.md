@@ -125,3 +125,16 @@ ai_emulator_weather/
 │   ├── live_fetch.py
 │   └── normalize.py
 └── README.md
+```
+## Requiremnts
+```bash
+python -m venv venv
+source venv/Scripts/activate   # Windows
+pip install -r requirements.txt
+```
+
+
+Copy code
+```bash
+pip install torch numpy pandas scikit-learn matplotlib requests tqdm
+```

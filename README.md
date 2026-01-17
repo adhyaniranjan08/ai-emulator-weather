@@ -134,7 +134,12 @@ python -m venv venv
 source venv/Scripts/activate   # Windows
 pip install -r requirements.txt
 ```
-
+## To install environment
+```bash
+python -m venv venv
+source venv/Scripts/activate
+pip install torch pandas scikit-learn tqdm
+pip install numpy --no-cache-dir
 
 Copy code
 ```bash

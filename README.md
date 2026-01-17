@@ -141,7 +141,5 @@ source venv/Scripts/activate
 pip install torch pandas scikit-learn tqdm
 pip install numpy --no-cache-dir
 
-Copy code
-```bash
 pip install torch numpy pandas scikit-learn matplotlib requests tqdm
 ```

@@ -87,8 +87,7 @@ Evaluate all trained models on the test dataset using:
 ```bash
 python -m eval.evaluate_all_models
 
-
-## 🌐 Live Inference
+**## 🌐 Live Inference**
 
 The project supports real-time weather prediction using external weather APIs.
 
@@ -99,7 +98,7 @@ python -m live_inference.run_live
 Compare predictions from different models:
 python -m live_inference.compare_models
 
-📁 Project Structure
+**📁 Project Structure**
 ai_emulator_weather/
 ├── data/
 │   ├── raw/
